@@ -36,6 +36,15 @@ export class LoginProvider {
     })
   }
 
+  loginComFacebook(){
+    //noinspection TypeScriptUnresolvedFunction
+    let provider = new firebase.auth.FacebookAuthProvider();
+
+    return firebase.auth().signInWithPopup(provider)
+      .then(resultado => this.callbackSucessoLogin(resultado))
+      .catch(error => this.callbackFalhaLogin(error))
+  }
+
   loginComCredencial(credencial:Credencial){
     firebase.auth().signInWithEmailAndPassword(credencial.email,credencial.senha)
       .then(resultado => this.callbackSucessoLogin(resultado))

@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {Registrar} from "../registrar/registrar";
 import {LoginProvider} from "../../providers/login-provider";
 import {Credencial} from "../../model/credencial";
+import {HomePage} from "../home/home";
 
 @Component({
   selector: 'page-login',
@@ -18,11 +19,15 @@ export class Login {
   ionViewDidLoad() {
     this.credencial = new Credencial();
     this.loginProvider.loginSucessoEventEmitter.subscribe(
-      user => console.log(user)
+      user => this.navCtrl.setRoot(HomePage)
     )
     this.loginProvider.loginFalhaEventEmitter.subscribe(
       error => console.log(error)
     )
+  }
+
+  loginComFacebook(){
+    this.loginProvider.loginComFacebook();
   }
 
   loginComCredencial(){
