@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar color='primary'>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Minhas Tarefas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list [virtualScroll]="tarefas">
+    <ion-item-sliding *virtualItem="let tarefa">
+      <button ion-item (click)="atualizarTarefa(tarefa)">
+        <tarefa-list-item [tarefa]="tarefa"></tarefa-list-item>
+      </button>
+
+      <ion-item-options>
+        <button ion-button clear icon-only (click)="deletarTarefa(tarefa)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+<ion-fab bottom right>
+    <button ion-fab color='primary' (click)="adicionarTarefa()">
+        <ion-icon name='add'></ion-icon>
+    </button>
+</ion-fab>

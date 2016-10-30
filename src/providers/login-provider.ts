@@ -61,7 +61,10 @@ export class LoginProvider {
 
   registrarUsuario(credencial:Credencial){
     firebase.auth().createUserWithEmailAndPassword(credencial.email,credencial.senha)
-      .then(result => console.log(result))
+      .then(result => {
+        console.log(result);
+        firebase.database().ref('users/').child(result.uid).set(result.email)
+      })
       .catch(error => console.log(error));
   }
 

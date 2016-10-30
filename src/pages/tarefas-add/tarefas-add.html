@@ -1,0 +1,58 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{tarefa.titulo != undefined ? tarefa.titulo : 'Minha tarefa'}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>
+              Titulo
+            </ion-label>
+            <ion-input name="titulo" [(ngModel)]="tarefa.titulo" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>
+              Descrição
+            </ion-label>
+            <ion-input name="descricao" [(ngModel)]="tarefa.descricao" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>
+              Status
+            </ion-label>
+            <ion-select name="state" [(ngModel)]="tarefa.state">
+              <ion-option *ngFor="let state of lovProvider.getTarefaStates()" [value]="state">
+                {{state}}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button full clear (click)="salvarTarefa()">
+            Salvar tarefa
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>

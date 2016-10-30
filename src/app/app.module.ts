@@ -6,13 +6,20 @@ import { Login } from '../pages/login/login';
 import {LoginProvider} from "../providers/login-provider";
 import {Registrar} from "../pages/registrar/registrar";
 import firebase from "firebase";
+import {TarefaListItem} from "../components/tarefa-list-item/tarefa-list-item";
+import {TarefasList} from "../pages/tarefas-list/tarefas-list";
+import {TarefasAdd} from "../pages/tarefas-add/tarefas-add";
+import {TarefaProvider} from "../providers/tarefa-provider";
+import {LovProvider} from "../providers/lov-provider";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     Login,
-    Registrar
+    Registrar,
+    TarefasList,
+    TarefaListItem,
+    TarefasAdd
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -20,12 +27,16 @@ import firebase from "firebase";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     Login,
-    Registrar
+    Registrar,
+    TarefasList,
+    TarefaListItem,
+    TarefasAdd
   ],
   providers: [
-    LoginProvider
+    LoginProvider,
+    TarefaProvider,
+    LovProvider
   ]
 })
 export class AppModule {
