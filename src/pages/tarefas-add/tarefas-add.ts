@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, Validators} from '@angular/forms';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import {Tarefa} from "../../model/tarefa";
 import {LovProvider} from "../../providers/lov-provider";
