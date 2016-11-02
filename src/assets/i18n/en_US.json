@@ -1,0 +1,30 @@
+{
+  "global" : {
+    "buttons" : {
+      "login" : "Sign in",
+      "login_facebook" : "Sign in with facebook",
+      "login_google" : "Sign in with google",
+      "register" : "Register"
+    },
+    "inputs" : {
+      "email" : "E-mail",
+      "password" : "Password"
+    },
+    "labels" : {
+      "pt_BR" : "Portuguese",
+      "en_US" : "English (USA)"
+    }
+  },
+
+  "pages" : {
+    "login" : {
+      "title" : "Sign in"
+    },
+    "linguagem" : {
+      "title" : "Language"
+    },
+    "tarefa" : {
+      "title" : "Tasks"
+    }
+  }
+}

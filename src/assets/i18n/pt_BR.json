@@ -1,0 +1,27 @@
+{
+  "global" : {
+    "buttons" : {
+      "login" : "Logar",
+      "login_facebook" : "Login com facebook",
+      "login_google" : "Login com google",
+      "register" : "Registrar-se"
+    },
+    "inputs" : {
+      "email" : "E-mail",
+      "password" : "Senha"
+    },
+    "labels" : {
+      "pt_BR" : "Português",
+      "en_US" : "Inglês (USA)"
+    }
+  },
+
+  "pages" : {
+    "login" : {
+      "title" : "Login"
+    },
+    "linguagem" : {
+      "title" : "Linguagem"
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import {Registrar} from "../registrar/registrar";
 import {LoginProvider} from "../../providers/login-provider";
 import {Credencial} from "../../model/credencial";
@@ -14,13 +14,23 @@ export class Login {
   credencial:Credencial;
 
   constructor(public navCtrl: NavController,
-              public loginProvider: LoginProvider) {}
+              public loginProvider: LoginProvider,
+              public menuCtrl: MenuController) {}
+
+  ionViewDidEnter(){
+    this.menuCtrl.enable(false);
+    this.menuCtrl.swipeEnable(false);
+  }
 
   ionViewDidLoad() {
     this.credencial = new Credencial();
     this.loginProvider.loginSucessoEventEmitter.subscribe(
-      user => this.navCtrl.setRoot(TarefasList)
-    )
+      user => {
+        this.menuCtrl.enable(true);
+        this.menuCtrl.swipeEnable(true);
+        this.navCtrl.setRoot(TarefasList)
+      }
+    );
     this.loginProvider.loginFalhaEventEmitter.subscribe(
       error => console.log(error)
     )

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {Http} from '@angular/http';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Login } from '../pages/login/login';
@@ -10,24 +11,37 @@ import {TarefasList} from "../pages/tarefas-list/tarefas-list";
 import {TarefasAdd} from "../pages/tarefas-add/tarefas-add";
 import {TarefaProvider} from "../providers/tarefa-provider";
 import {LovProvider} from "../providers/lov-provider";
+import {TranslateModule, TranslateStaticLoader, TranslateLoader} from 'ng2-translate';
+import {Linguagem} from "../pages/linguagem/linguagem";
+
+export function createTranslateLoader(http:Http) {
+  return new TranslateStaticLoader(http, './assets/i18n', '.json');
+}
 
 @NgModule({
   declarations: [
     MyApp,
     Login,
     Registrar,
+    Linguagem,
     TarefasList,
     TarefaListItem,
     TarefasAdd
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (createTranslateLoader),
+      deps: [Http]
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     Login,
     Registrar,
+    Linguagem,
     TarefasList,
     TarefaListItem,
     TarefasAdd

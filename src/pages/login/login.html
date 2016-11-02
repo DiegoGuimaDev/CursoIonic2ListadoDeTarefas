@@ -2,7 +2,7 @@
 
   <ion-card>
     <ion-card-header>
-      Login
+      {{"pages.login.title" | translate}}
     </ion-card-header>
     <ion-card-content>
       <ion-grid>
@@ -10,7 +10,7 @@
           <ion-col>
             <ion-item>
               <ion-label floating>
-                E-mail
+                {{"global.inputs.email" | translate}}
               </ion-label>
               <ion-input name="email" [(ngModel)]="credencial.email"></ion-input>
             </ion-item>
@@ -21,7 +21,7 @@
           <ion-col>
             <ion-item>
               <ion-label floating>
-                Senha
+                {{"global.inputs.password" | translate}}
               </ion-label>
               <ion-input type="password" name="senha" [(ngModel)]="credencial.senha"></ion-input>
             </ion-item>
@@ -31,7 +31,8 @@
         <ion-row>
           <ion-col>
             <button ion-button full color="primary" (click)="loginComCredencial()">
-              Logar
+
+              {{"global.buttons.login" | translate}}
             </button>
           </ion-col>
         </ion-row>
@@ -39,18 +40,22 @@
         <ion-row>
           <ion-col width-50>
             <button ion-button full class="btnLogin" (click)="loginComFacebook()">
-              Login com facebook
+
+              {{"global.buttons.login_facebook" | translate}}
             </button>
           </ion-col>
           <ion-col width-50>
             <button ion-button full class="btnLogin" (click)="loginComGoogle()">
-              Login com google
+
+              {{"global.buttons.login_google" | translate}}
             </button>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <a (click)="doRegister()">Registrar-se</a>
+            <a (click)="doRegister()">
+              {{"global.buttons.register" | translate}}
+            </a>
           </ion-col>
         </ion-row>
       </ion-grid>
