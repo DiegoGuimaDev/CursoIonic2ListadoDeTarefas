@@ -8,7 +8,7 @@
 
 <ion-content padding>
 
-  <form>
+  <form [formGroup]="tarefaForm">
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -16,8 +16,18 @@
             <ion-label floating>
               Titulo
             </ion-label>
-            <ion-input name="titulo" [(ngModel)]="tarefa.titulo" required></ion-input>
+            <ion-input formControlName="titulo" name="titulo" [(ngModel)]="tarefa.titulo"></ion-input>
           </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="!tarefaForm.controls.titulo.valid">
+        <ion-col>
+          <span *ngIf="tarefaForm.controls.titulo.errors.required">
+            O titulo da tarefa é obrigatorio.
+          </span>
+          <span *ngIf="tarefaForm.controls.titulo.errors.minlength">
+            O titulo da tarefa deve conter no minimo 5 caracteres
+          </span>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -26,7 +36,7 @@
             <ion-label floating>
               Descrição
             </ion-label>
-            <ion-input name="descricao" [(ngModel)]="tarefa.descricao" required></ion-input>
+            <ion-input formControlName="descricao" name="descricao" [(ngModel)]="tarefa.descricao"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -37,9 +47,9 @@
             <ion-label floating>
               Status
             </ion-label>
-            <ion-select name="state" [(ngModel)]="tarefa.state">
+            <ion-select formControlName="estadoTarefa" name="state" [(ngModel)]="tarefa.state">
               <ion-option *ngFor="let state of lovProvider.getTarefaStates()" [value]="state">
-                {{state}}
+                {{getEstadoValue(state)}}
               </ion-option>
             </ion-select>
           </ion-item>
@@ -47,7 +57,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <button ion-button full clear (click)="salvarTarefa()">
+          <button ion-button full clear (click)="salvarTarefa()" [disabled]="tarefaForm.invalid">
             Salvar tarefa
           </button>
         </ion-col>

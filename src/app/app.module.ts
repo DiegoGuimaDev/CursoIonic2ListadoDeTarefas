@@ -63,9 +63,5 @@ export class AppModule {
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCIfAfkOLIVv2rSBeyKBiHbyOiMACdWTd0",
-  authDomain: "listadordetarefas-5d1ed.firebaseapp.com",
-  databaseURL: "https://listadordetarefas-5d1ed.firebaseio.com",
-  storageBucket: "",
-  messagingSenderId: "642450848408"
+
 };

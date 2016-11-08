@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import {Tarefa} from "../../model/tarefa";
 import {LovProvider} from "../../providers/lov-provider";
 import {TarefaProvider} from "../../providers/tarefa-provider";
+import {EstadoTarefa} from "../../model/estado-tarefa";
 
 @Component({
   selector: 'page-tarefas-add',
@@ -12,7 +13,7 @@ import {TarefaProvider} from "../../providers/tarefa-provider";
 export class TarefasAdd {
 
   tarefa:Tarefa;
-  tarefaForm;
+  tarefaForm:FormGroup;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -24,17 +25,19 @@ export class TarefasAdd {
   }
 
   private initialize(){
-    this.tarefaForm = this.fb.group({
-      'titulo' : ['',Validators.required],
-      'descricao' : ['', Validators.required]
-    });
-  }
-
-  ionViewDidLoad() {
     this.tarefa = this.navParams.get('tarefa');
     if(!this.tarefa){
       this.tarefa = new Tarefa();
     }
+    this.tarefaForm = this.fb.group({
+      'titulo' : ['',Validators.compose([Validators.required, Validators.minLength(5)])],
+      'descricao' : [''],
+      'estadoTarefa' : ['',Validators.required]
+    });
+  }
+
+  getEstadoValue(estadoTarefa: EstadoTarefa):string{
+    return EstadoTarefa[estadoTarefa];
   }
 
   salvarTarefa(){

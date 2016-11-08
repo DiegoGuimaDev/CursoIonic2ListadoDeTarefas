@@ -15,7 +15,13 @@ export class Login {
 
   constructor(public navCtrl: NavController,
               public loginProvider: LoginProvider,
-              public menuCtrl: MenuController) {}
+              public menuCtrl: MenuController) {
+    this.initialize();
+  }
+
+  private initialize(){
+    this.credencial = new Credencial();
+  }
 
   ionViewDidEnter(){
     this.menuCtrl.enable(false);
@@ -23,7 +29,6 @@ export class Login {
   }
 
   ionViewDidLoad() {
-    this.credencial = new Credencial();
     this.loginProvider.loginSucessoEventEmitter.subscribe(
       user => {
         this.menuCtrl.enable(true);
